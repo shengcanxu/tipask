@@ -67,11 +67,24 @@ class ArticleController extends Controller
 
         $this->validate($request,$this->validateRules);
 
+        //change clean setting to allow youku video iframe
+        $cleanSetting = [
+            //'HTML.Doctype'             => 'XHTML 1.0 Strict',
+            //'HTML.Allowed'             => 'iframe,div,b,strong,i,em,a[href|title],ul,ol,li,p[style],br,span[style],img[width|height|alt|src]',
+            'HTML.ForbiddenElements'   => 'object,script,link,meta,title,body,html',
+            'CSS.AllowedProperties'    => 'note-video-clip,font,font-size,font-weight,font-style,font-family,text-decoration,padding-left,color,background-color,text-align',
+            'AutoFormat.AutoParagraph' => true,
+            'AutoFormat.RemoveEmpty'   => true,
+            "HTML.SafeIframe"      => 'true',
+            "URI.SafeIframeRegexp" => "%^(http://|https://|//)player.youku.com/embed/%"
+        ];
+
         $data = [
             'user_id'      => $loginUser->id,
             'category_id'      => intval($request->input('category_id',0)),
             'title'        => trim($request->input('title')),
-            'content'  => clean($request->input('content')),
+            'content'  => clean($request->input('content'),$cleanSetting),
+            //'content' => $request->input('content'),
             'summary'  => $request->input('summary'),
             'status'       => 1,
         ];
