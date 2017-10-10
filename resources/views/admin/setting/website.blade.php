@@ -68,6 +68,18 @@
                             </select>
                         </div>
 
+                        <div class="form-group">
+                            <label for="website_defaultpage">网站默认首页</label>
+                            <span class="text-muted">(首页，发现，问答，文章，话题)</span>
+                            <select name="website_defaultpage" class="form-control">
+                                <option value="index" selected>首页</option>
+                                <option value="/doings" >发现</option>
+                                <option value="/questions" >问答</option>
+                                <option value="/articles" >文章</option>
+                                <option value="/topics" >话题</option>
+                            </select>
+                        </div>
+
                         <div class="form-group @if ($errors->has('website_admin_email')) has-error @endif">
                             <label for="website_admin_email">系统缓存时间（分钟）</label>
                             <span class="text-muted">(设置范围是1-8640，缓存相关数据，包括首页缓存、积分排行榜等)</span>

@@ -23,6 +23,7 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 
 class IndexController extends Controller
 {
@@ -33,6 +34,11 @@ class IndexController extends Controller
      */
     public function index()
     {
+        $defaultPage = Setting()->get("website_defaultpage");
+        if($defaultPage != "index" && $defaultPage != "" && $defaultPage != null){
+            return Redirect::to($defaultPage);
+        }
+
         /*热门话题*/
         $hotTags =  Taggable::globalHotTags();
 
