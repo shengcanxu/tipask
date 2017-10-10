@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Setting;
 use Illuminate\Contracts\View\Factory as View;
 use Illuminate\Support\ServiceProvider;
 
@@ -14,7 +15,7 @@ class ThemeServiceProvider extends ServiceProvider
      */
     public function boot(View $view)
     {
-        $theme = 'default';
+        $theme = Setting()->get('website_theme');
         $view->addNameSpace('theme', [
             base_path()."/resources/views/themes/$theme",
             base_path().'/resources/views/themes/default',
