@@ -404,6 +404,10 @@ Route::Group(['prefix'=>'admin','namespace'=>'Admin','middleware' =>['auth','aut
     Route::get("xunSearch/rebuild",['as'=>'admin.xunSearch.rebuild','uses'=>'XunSearchController@rebuild']);
 
 
+    /*爬虫*/
+    Route::get('crawler',['as'=>'admin.crawler.index','uses'=>'SettingController@crawler']);
+    Route::get('crawler/{id}/run', ['as'=>'admin.crawler.run', 'uses'=>'SettingController@crawlerRun']);
+
 
 });
 

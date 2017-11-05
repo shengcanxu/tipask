@@ -82,6 +82,16 @@
         </ul>
     </li>
 
+    <li class="treeview">
+        <a href="#">
+            <i class="fa fa=recycle"></i> <span>爬虫</span>
+            <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu" id="crawler">
+            <li><a href="{{route('admin.crawler.index')}}"><i class="fa fa-circle-o"></i>爬虫列表 </a></li>
+        </ul>
+    </li>
+
 
     <li class="header">常用菜单</li>
     <li><a href="{{ route('website.index') }}" target="_blank"><i class="fa fa-circle-o text-success"></i> <span>网站首页</span></a></li>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use App\Models\Crawler;
 
 use App\Http\Requests;
 
@@ -257,6 +258,18 @@ class SettingController extends AdminController
 
         return view('admin.setting.oauth');
 
+    }
+
+    public function crawler(Request $request)
+    {
+        $crawlers = Crawler::all();
+
+        return view('admin.crawler.index')->with('crawlers',$crawlers);
+    }
+
+    public function crawlerRun(Request $request)
+    {
+        return view('admin.crawler.run');
     }
 
 }
